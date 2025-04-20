@@ -29,6 +29,7 @@ class CustomBottomNavBar extends StatelessWidget {
           label: 'Pengaturan',
         ),
       ],
+      selectedItemColor: Colors.deepOrange,
     );
   }
 }

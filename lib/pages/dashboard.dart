@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:jurusan_inggris/pages/kalender.dart';
 import 'package:jurusan_inggris/widgets/bottom_navbar.dart';
 import 'package:jurusan_inggris/pages/profil_jurusan.dart';
+import 'package:jurusan_inggris/pages/program_studi.dart';
+import 'package:jurusan_inggris/pages/akreditasi.dart';
 
 class DashboardPage extends StatelessWidget {
   final Function(int) onNavigate;
@@ -39,7 +41,7 @@ class DashboardPage extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader() { //THIS TOP PART THAT CONTAINS THE IMAGE, NAME, NIM, AND NOTIFICATION ICON
+  Widget _buildHeader() {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -66,7 +68,7 @@ class DashboardPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
               Text(
-                'Jonathan',
+                'Veritas Ratio',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,
@@ -92,16 +94,29 @@ class DashboardPage extends StatelessWidget {
     );
   }
 
-  Widget _buildMainFeatures() { //this part builds the box with 4 circle icons and labels
+  Widget _buildMainFeatures() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Menu',
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              'Menu',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            // Hint untuk swipe
+            Row(
+              children: const [
+                Icon(Icons.swipe, size: 16, color: Colors.grey),
+                SizedBox(width: 4),
+                Text('Swipe kanan', style: TextStyle(color: Colors.grey, fontSize: 12)),
+              ],
+            ),
+          ],
         ),
         const SizedBox(height: 8),
         Container(
@@ -117,23 +132,25 @@ class DashboardPage extends StatelessWidget {
                 icon: Icons.calendar_today,
                 label: 'Kalender',
                 color: Colors.deepOrange,
-                index: 1,
+                index: 0,
               ),
               _buildFeatureItem(
                 icon: Icons.account_balance,
                 label: 'Profil Jurusan',
                 color: Colors.deepOrange,
-                index: 2,
+                index: 1,
               ),
               _buildFeatureItem(
                 icon: Icons.book,
                 label: 'Program Studi',
                 color: Colors.deepOrange,
+                index: 2,
               ),
               _buildFeatureItem(
                 icon: Icons.verified,
                 label: 'Akreditasi',
                 color: Colors.deepOrange,
+                index: 3,
               ),
             ],
           ),
@@ -142,33 +159,33 @@ class DashboardPage extends StatelessWidget {
     );
   }
 
-  Widget _buildFeatureItem({ //this part builds the circle icon with label
+  Widget _buildFeatureItem({
     required IconData icon,
     required String label,
     required Color color,
     int? index,
   }) {
-        return GestureDetector(
-          onTap: () {
-            if (index != null) {
-              onNavigate(index); // gunakan callback untuk navigasi antar tab
-            }
-          },
-          child: Column(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(color: color, shape: BoxShape.circle),
-                child: Icon(icon, color: Colors.white, size: 24),
-              ),
-              const SizedBox(height: 8),
-              Text(label, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500)),
-            ],
+    return GestureDetector(
+      onTap: () {
+        if (index != null) {
+          onNavigate(index);
+        }
+      },
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+            child: Icon(icon, color: Colors.white, size: 24),
           ),
-        );
-      }
+          const SizedBox(height: 8),
+          Text(label, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500)),
+        ],
+      ),
+    );
+  }
 
-  Widget _buildNewsSection() { //this shows the news title and news card with headline + img
+  Widget _buildNewsSection() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -194,7 +211,7 @@ class DashboardPage extends StatelessWidget {
     );
   }
 
-  Widget _buildNewsItem({required String title, required String imageUrl}) { //this builds the rectangle card
+  Widget _buildNewsItem({required String title, required String imageUrl}) {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
@@ -247,5 +264,4 @@ class DashboardPage extends StatelessWidget {
       ),
     );
   }
-
 }
