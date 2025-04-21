@@ -21,8 +21,8 @@ class CustomBottomNavBar extends StatelessWidget {
           label: 'Beranda',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.search),
-          label: 'Cari',
+          icon: Icon(Icons.person),
+          label: 'Profil',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.settings),

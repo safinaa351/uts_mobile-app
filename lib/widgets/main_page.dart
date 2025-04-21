@@ -5,6 +5,8 @@ import 'package:jurusan_inggris/widgets/bottom_navbar.dart';
 import 'package:jurusan_inggris/pages/profil_jurusan.dart';
 import 'package:jurusan_inggris/pages/program_studi.dart';
 import 'package:jurusan_inggris/pages/akreditasi.dart';
+import 'package:jurusan_inggris/pages/ubah_data_diri.dart';
+import 'package:jurusan_inggris/pages/setelan.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -13,7 +15,7 @@ class MainPage extends StatefulWidget {
   State<MainPage> createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin{
   int _selectedIndex = 0;
   int _selectedFeatureIndex = -1; // Diubah ke -1 agar dashboard ditampilkan saat awal
   bool _isDrawerVisible = false;
@@ -31,8 +33,8 @@ class _MainPageState extends State<MainPage> {
     // Menu utama di bottom navbar
     _mainPages.addAll([
       DashboardPage(onNavigate: _navigateToFeature), // Dashboard dengan fungsi navigasi ke fitur
-      const Center(child: Text("Pencarian (coming soon)")),
-      const Center(child: Text("Pengaturan (coming soon)")),
+      const Center(child: Text("Profil (coming soon)")),
+      const Center(child: Text("Setelan (coming soon)")),
     ]);
     
     // Halaman fitur utama (yang diakses dari dashboard)
